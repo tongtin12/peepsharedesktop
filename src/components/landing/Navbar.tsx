@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Download, Flame } from "lucide-react";
+import { Download } from "lucide-react";
+import logo from "@/assets/logo01.png";
 
 const links = [
   { label: "Download", href: "#download" },
   { label: "Features", href: "#features" },
-  { label: "Requirements", href: "#requirements" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -32,9 +32,11 @@ export function Navbar() {
         style={{ borderColor: scrolled ? "oklch(0.74 0.18 55 / 30%)" : undefined }}
       >
         <a href="#" className="flex items-center gap-2.5">
-          <span className="relative flex h-8 w-8 items-center justify-center rounded-lg btn-glow">
-            <Flame className="h-4 w-4" strokeWidth={2.5} />
-          </span>
+          <img
+            src={logo}
+            alt="PEEP SHARE logo"
+            className="h-8 w-8 rounded-lg object-cover"
+          />
           <span className="font-display text-[15px] font-semibold tracking-tight">
             PEEP <span className="text-ember">SHARE</span>
           </span>

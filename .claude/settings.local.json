@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git push *)",
+      "Bash(gh auth *)",
+      "Read(//Users/tongtin/**)",
+      "Bash(ssh -T git@github.com)",
+      "Bash(git remote *)",
+      "Bash(npx tsc *)"
+    ]
+  }
+}

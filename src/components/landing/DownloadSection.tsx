@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Apple, Cpu, Download, Monitor, Sparkles } from "lucide-react";
 
 
@@ -19,8 +20,8 @@ const platforms: Array<{
     name: "Windows",
     badge: ".EXE INSTALLER",
     support: "Windows 10 / 11 (64-bit)",
-    version: "v2.0.1",
-    size: "98 MB",
+    version: "v1.9.0",
+    size: "116 MB",
     cta: "Download for Windows",
     Icon: Monitor,
   },
@@ -29,7 +30,7 @@ const platforms: Array<{
     name: "macOS Intel",
     badge: "INTEL CHIP",
     support: "macOS 11 Big Sur or later",
-    version: "v2.0.1",
+    version: "v1.6.3",
     size: "112 MB",
     cta: "Download for macOS Intel",
     Icon: Apple,
@@ -39,7 +40,7 @@ const platforms: Array<{
     name: "macOS Apple Silicon",
     badge: "M-CHIP NATIVE",
     support: "macOS 12 Monterey or later",
-    version: "v2.0.1",
+    version: "v1.6.3",
     size: "104 MB",
     cta: "Download for macOS Apple Silicon",
     Icon: Cpu,
@@ -47,12 +48,24 @@ const platforms: Array<{
 ];
 
 export function DownloadSection() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const glowY = useTransform(scrollYProgress, [0, 1], [120, -120]);
+
   return (
-    <section id="download" className="relative py-24 sm:py-32">
-      <div
+    <section ref={ref} id="download" className="relative py-32 sm:py-44">
+      <motion.div
+        style={{ y: glowY }}
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[600px] opacity-60 blur-3xl"
-        style={{ background: "radial-gradient(ellipse at center top, oklch(0.7 0.22 45 / 30%), transparent 60%)" }}
-      />
+      >
+        <div
+          className="h-full w-full"
+          style={{ background: "radial-gradient(ellipse at center top, oklch(0.7 0.22 45 / 30%), transparent 60%)" }}
+        />
+      </motion.div>
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

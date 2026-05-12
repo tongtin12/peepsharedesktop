@@ -5,7 +5,7 @@ import { DownloadSection } from "@/components/landing/DownloadSection";
 import { Features } from "@/components/landing/Features";
 
 
-import { FAQ } from "@/components/landing/FAQ";
+import { Contact } from "@/components/landing/Contact";
 import { Footer } from "@/components/landing/Footer";
 
 export const Route = createFileRoute("/")({
@@ -35,8 +35,8 @@ function Index() {
       <Hero />
       <DownloadSection />
       <Features />
-      
-      <FAQ />
+
+      <Contact />
       <Footer />
     </main>
   );

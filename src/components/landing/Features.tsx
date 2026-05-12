@@ -1,26 +1,44 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
-  Zap,
-  ShieldCheck,
+  MessageCircleMore,
+  CloudFog,
   Globe2,
-  LayoutGrid,
-  Users,
-  Sparkles,
+  MessageSquareShare,
+  Ticket,
+  MessageSquare,
 } from "lucide-react";
 
 const features = [
-  { icon: Zap, title: "Faster File Sync", desc: "Delta-sync engine moves only what changed — across gigabytes in seconds." },
-  { icon: ShieldCheck, title: "Secure Share System", desc: "End-to-end encrypted links with granular access and expiry control." },
-  { icon: Globe2, title: "Cross Platform Access", desc: "Identical experience on Windows, macOS Intel, and Apple Silicon." },
-  { icon: LayoutGrid, title: "Smart Workspace", desc: "Pin projects, tag assets, and build the layout that fits your flow." },
-  { icon: Users, title: "Real-time Collaboration", desc: "Live cursors, presence, and instant comments — no refresh needed." },
-  { icon: Sparkles, title: "AI Quick Actions", desc: "Summarize, rename, and route files automatically with on-device AI." },
+  { icon: MessageCircleMore, title: "PEEPS Chat", desc: "Send messages easily and manage unsent messages within 14 days." },
+  { icon: CloudFog, title: "PEEPS Cloud", desc: "Start Your Cloud Storage Get 20 GB free space,keep your files forever." },
+  { icon: Globe2, title: "PEEPS AI Translate", desc: "Translate up to 20 languages and talk and connect with anyone." },
+  { icon: Ticket, title: "PEEPS Event", desc: "Spotlight on Your Events" },
+  { icon: MessageSquare, title: "PEEPS Talk", desc: "Voice & Video Call" },
+  { icon: MessageSquareShare, title: "PEEPS SHARE", desc: "Share Albums on the Cloud." },
 ];
 
 export function Features() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const glowY = useTransform(scrollYProgress, [0, 1], [120, -120]);
+  const headingY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+
   return (
-    <section id="features" className="relative py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6">
+    <section ref={ref} id="features" className="relative py-32 sm:py-44">
+      <motion.div
+        style={{ y: glowY }}
+        className="pointer-events-none absolute -right-40 top-20 -z-10 h-[520px] w-[520px] rounded-full opacity-40 blur-[140px]"
+      >
+        <div
+          className="h-full w-full rounded-full"
+          style={{ background: "radial-gradient(circle, oklch(0.7 0.22 45 / 45%), transparent 70%)" }}
+        />
+      </motion.div>
+      <motion.div style={{ y: headingY }} className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +77,7 @@ export function Features() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
