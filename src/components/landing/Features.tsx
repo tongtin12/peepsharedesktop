@@ -4,7 +4,7 @@ import {
   MessageCircleMore,
   CloudFog,
   Globe2,
-  MessageSquareShare,
+  Share2,
   Ticket,
   MessageSquare,
 } from "lucide-react";
@@ -15,7 +15,7 @@ const features = [
   { icon: Globe2, title: "PEEPS AI Translate", desc: "Translate up to 20 languages and talk and connect with anyone." },
   { icon: Ticket, title: "PEEPS Event", desc: "Spotlight on Your Events" },
   { icon: MessageSquare, title: "PEEPS Talk", desc: "Voice & Video Call" },
-  { icon: MessageSquareShare, title: "PEEPS SHARE", desc: "Share Albums on the Cloud." },
+  { icon: Share2, title: "PEEPS SHARE", desc: "Share Albums on the Cloud." },
 ];
 
 export function Features() {
